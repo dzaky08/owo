@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('detail_transaksis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('hotel_id')->constrained();
+            $table->foreignId('kamar_id')->constrained();
+            $table->foreignId('transaksi_id')->constrained();
+            $table->integer('qty');
+            $table->enum('status', ['sudah di bayar', 'belum di bayar']);
+            $table->integer('total_harga');
             $table->timestamps();
         });
     }

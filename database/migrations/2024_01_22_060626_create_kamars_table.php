@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('kamars', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('hotel_id')->constrained();
+            $table->string('nama');
+            $table->string('no_kamar');
+            $table->string('foto');
+            $table->enum('status', ['sudah di booking', 'belum di booking']);
+            $table->integer('harga');
             $table->timestamps();
         });
     }
