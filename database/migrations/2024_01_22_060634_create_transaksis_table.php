@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->integer('total_harga');
             $table->string('kode');
-            $table->integer('qty');
             $table->timestamps();
         });
     }

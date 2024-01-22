@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use Illuminate\Routing\Controllers\Middleware;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//route awal sehingga si pengguna di wajibkan login terlebih dahulu
+Route::get('/', [AuthController::class, 'login'])->name('login');
 
-Route::get('/', function () {
-    return view('welcome');
+//route di masukkan kedalam middleware sehingga di perlukan login terlebih dahulu
+Route::middleware(['auth'])->group(function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/hotel', [UserController::class, 'hotel'])->name('hotel');
+    Route::get('/home', [UserController::class, 'home'])->name('home');
 });

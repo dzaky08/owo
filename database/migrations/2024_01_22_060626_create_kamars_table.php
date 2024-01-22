@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('hotel_id')->constrained();
             $table->string('nama');
             $table->string('no_kamar');
+            $table->text('deskripsi');
             $table->string('foto');
             $table->enum('status', ['sudah di booking', 'belum di booking']);
             $table->integer('harga');

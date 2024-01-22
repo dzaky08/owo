@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('hotel_id')->constrained();
             $table->foreignId('kamar_id')->constrained();
-            $table->foreignId('transaksi_id')->constrained();
+            $table->foreignId('transaksi_id')->nullable()->constrained();
             $table->integer('qty');
             $table->enum('status', ['sudah di bayar', 'belum di bayar']);
             $table->integer('total_harga');
