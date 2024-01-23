@@ -4,7 +4,8 @@
     <a href="{{route('login')}}" class="nav-link text-light">Login</a>
     @else
     <form action="{{route('logout')}}" method="get">
-
+        @csrf
+        <button class="btn btn-danger">logout</button>
     </form>
     @endguest
 </nav>

@@ -5,21 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\DetailTransaksi;
 use Illuminate\Http\Request;
 use App\Models\Hotel;
+use App\Models\Kamar;
 use App\Models\Transaksi;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function hotel()
-    {
-        return view('hotel');
+    public function kamar(Hotel $hotel)
+    {   
+        $kamar = Kamar::with('hotel')->get();
+        return view('hotel', compact('hotel','kamar'));
     }
 
     //fungsi beranda dimana menampilkan semua hotel
     public function home()
     {
         $hotel = Hotel::all();
-        return view('beranda', compact('hotel'));
+        return view('welcome', compact('hotel'));
     }
 
     public function bayar(detailtransaksi $detailtransaksi)

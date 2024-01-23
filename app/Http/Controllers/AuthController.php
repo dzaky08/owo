@@ -13,6 +13,24 @@ class AuthController extends Controller
         return view('login');
     }
 
+    //fungsi login
+    function postLogin(Request $request){
+        $cek = $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($cek)) {
+            $user = Auth::user();
+            if ($user->role == 'user') {
+                return redirect()->route('home')->with('status', 'Welcome to Home' , $user->name);
+            } else {
+                return redirect()->route('dash')->with('status', 'Welcome to Home' , $user->name);
+            }
+            
+        }
+        return redirect()->route('dash')->with('status', 'Email or Password invalid!');
+    }
     //fungsi untuk logout
     public function logout()
     {

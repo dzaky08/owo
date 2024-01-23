@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use Illuminate\Routing\Controllers\Middleware;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -17,13 +16,12 @@ use App\Http\Controllers\AuthController;
 */
 //route awal sehingga si pengguna di wajibkan login terlebih dahulu
 Route::get('/', [AuthController::class, 'login'])->name('login');
-
-
+Route::post('/post-login', [AuthController::class, 'postLogin'])->name('post-login');
 
 //route di masukkan kedalam middleware sehingga di perlukan login terlebih dahulu
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/hotel', [UserController::class, 'hotel'])->name('hotel');
+    Route::get('/kamar/{hotel}', [UserController::class, 'kamar'])->name('kamar');
     Route::get('/home', [UserController::class, 'home'])->name('home');
     Route::get('/bayar{detailtransaksi}', [UserController::class, 'bayar'])->name('bayar');
     Route::get('/postbayar{detailtransaksi}', [UserController::class, 'postbayar'])->name('postbayar');

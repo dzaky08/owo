@@ -4,7 +4,8 @@
     <div class="container mt-5">
         <div class="card mx-auto p-5 w-25">
             <h3 class="text-center fw-bold">Login</h3>
-            <form action="" class="form-group">
+            <form action="{{route('post-login')}}" class="form-group" method="POST">
+                @csrf
                 <label for="email">Email</label>
                 <input type="email" class="form-control" name="email">
                 <label for="password">Password</label>
