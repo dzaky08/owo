@@ -19,7 +19,7 @@
             <div class="col-8">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Kamar = {{ $kamar->name }}</h3><br>
+                        <h3 class="card-title">Kamar = {{ $kamar->nama }}</h3><br>
                         <p class="card-text">Harga = {{ number_format($kamar->harga, 0, '.', '.') }}</p>
                         <p class="card-text">Total = {{ number_format($detailtransaksi->totalharga, 0, '.', '.') }}</p>
                         <p class="card-text">QTY = {{ $detailtransaksi->qty }}</p>

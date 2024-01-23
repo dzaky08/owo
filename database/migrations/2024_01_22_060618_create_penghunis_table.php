@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('penghunis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('name');
+            $table->string('nama');
             $table->string('email')->unique();
             $table->string('no_telp');
+            $table->date('mulai');
+            $table->date('selesai');
             $table->timestamps();
         });
     }
