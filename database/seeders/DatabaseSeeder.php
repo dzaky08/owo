@@ -5,10 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Hotel;
-<<<<<<< HEAD
 use App\Models\Kamar;
-=======
->>>>>>> 2096dcd649f98d2d5431eff9df48a310e027f355
 use App\Models\User;
 
 class DatabaseSeeder extends Seeder
@@ -37,34 +34,47 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin1'),
             'role' => 'admin',
         ]); 
-<<<<<<< HEAD
         Hotel::create([
+            'id' => '1',
             'nama' => 'Hotel Taman Sari',
             'alamat' => 'di Sukabumi belah kidul dikit',
             'rating' => '3',
             'foto' => 'img/hoteltamansari.jpg',
         ]); 
         Hotel::create([
+            'id' => '2',
             'nama' => 'Hotel Horison',
             'alamat' => 'di sukabumi cuma teu apal abdi ge',
             'rating' => '4',
             'foto' => 'img/hotelhorison.jpg',
         ]); 
         Kamar::create([
-            'hotel_id' => 1,
-            'nama' => 'premium',
-            'deskripsi' => 'memiliki fasilitas: Free Wif, AC, TV, Twinbed',
-            'foto' => 'img/superiorroom.jpg',
+            'hotel_id' => '1',
+            'nama' => 'Premium',
+            'deskripsi' => 'Free Wif, AC, TV, Twinbed',
+            'foto_kamar' => 'img/superiorroom.jpg',
             'harga' => 500000,
         ]); 
         Kamar::create([
-            'hotel_id' => 1,
-            'nama' => 'reguler',
-            'deskripsi' => 'kamar ini memiliki fasilitas: AC, TV, Twinbed',
-            'foto' => 'img/juniorsuite.jpg',
+            'hotel_id' => '1',
+            'nama' => 'Reguler',
+            'deskripsi' => ' AC, TV, Twinbed',
+            'foto_kamar' => 'img/juniorsuite.jpg',
             'harga' => 250000,
         ]); 
-=======
->>>>>>> 2096dcd649f98d2d5431eff9df48a310e027f355
+        Kamar::create([
+            'hotel_id' => '2',
+            'nama' => 'Presidential Suite ',
+            'deskripsi' => 'Free Wif, AC, TV, Twinbed',
+            'foto_kamar' => 'img/presidentialsuite.jpg',
+            'harga' => 1000000,
+        ]); 
+        Kamar::create([
+            'hotel_id' => '2',
+            'nama' => 'Twin Room',
+            'deskripsi' => ' AC, TV, Twinbed',
+            'foto_kamar' => 'img/twinroom.jpg',
+            'harga' => 650000,
+        ]); 
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('hotel_id')->constrained();
             $table->string('nama');
             $table->text('deskripsi');
-            $table->string('foto');
+            $table->string('foto_kamar');
             $table->integer('harga');
             $table->timestamps();
         });

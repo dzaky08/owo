@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <h3 class="card-title text-center">{{$item->nama}}</h3>
                     <p class="card-text">{{$item->alamat}}</p>
-                    <a href="" class="btn btn-outline-success">detail</a>
+                    <a href="{{ route('kamar', $item->id) }}" class="btn btn-outline-success">View</a>
                 </div>
             </div>
         </div>

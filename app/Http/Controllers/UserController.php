@@ -6,17 +6,14 @@ use App\Models\DetailTransaksi;
 use Illuminate\Http\Request;
 use App\Models\Hotel;
 use App\Models\Kamar;
+use App\Models\Penghuni;
 use App\Models\Transaksi;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function kamar(Hotel $hotel)
-    {   
-        $kamar = Kamar::with('hotel')->get();
-        return view('hotel', compact('hotel','kamar'));
-    }
-
     //fungsi beranda dimana menampilkan semua hotel
     public function home()
     {
@@ -24,6 +21,58 @@ class UserController extends Controller
         return view('welcome', compact('hotel'));
     }
 
+    public function kamar(Hotel $hotel)
+    {   
+        $kamars = $hotel->kamar;
+        return view('kamar', compact('hotel', 'kamars'));
+    }
+
+    function biodata(DetailTransaksi $detailtransaksi){
+        return view('biodata', compact('detailtransaksi'));
+    }
+
+    function booking(Kamar $kamar) {
+        $detailtransaksi = DetailTransaksi::create([
+            'user_id' => Auth::id(),
+            'kamar_id' => $kamar->id,
+            'status' => 'sudah dibooking',
+        ]);
+
+        return redirect()->route('biodata', ['detailtransaksi' => $detailtransaksi->id ]);
+    }
+
+    function postBiodata(Request $request, DetailTransaksi $detailtransaksi) {
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required',
+            'no_telp' => 'required',
+            'mulai' => 'required|datetime',
+            'selesai' => 'required|datetime',
+        ]);
+
+        $user_id = Auth::id();
+        $date_mulai = Carbon::parse($request->input('mulai'));
+        $date_selesai = Carbon::parse($request->input('selesai'));
+
+
+        Penghuni::create([
+            'user_id' => $user_id,
+            'nama' => $request->input('nama'),
+            'email' => $request->input('email'),
+            'no_telp' => $request->input('no_telp'),
+            'mulai' => $date_mulai,
+            'selesai' => $date_selesai,
+        ]);
+
+        $malam = $date_mulai->diffInDays($date_selesai);
+        $harga = $detailtransaksi->kamar->harga;
+
+        $detailtransaksi->update([
+            'total_harga'=> $harga * $malam
+        ]);
+
+        return redirect()->route('bayar');
+    }
     public function bayar(detailtransaksi $detailtransaksi)
     {
         $kamar = $detailtransaksi->kamar;
@@ -45,6 +94,7 @@ class UserController extends Controller
             'status'=>'cekout',
             'bukti_transaksi'=>$request->bukti_transaksi->store('img/buktipembayaran'),
         ]);
+        
         return redirect()->route('sumary')->with('status', 'Berhasil Upload bukti');
     }
 

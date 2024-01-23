@@ -17,13 +17,16 @@ use App\Http\Controllers\AuthController;
 //route awal sehingga si pengguna di wajibkan login terlebih dahulu
 Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/post-login', [AuthController::class, 'postLogin'])->name('post-login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //route di masukkan kedalam middleware sehingga di perlukan login terlebih dahulu
 Route::middleware(['auth'])->group(function () {
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/kamar/{hotel}', [UserController::class, 'kamar'])->name('kamar');
     Route::get('/home', [UserController::class, 'home'])->name('home');
-    Route::get('/bayar{detailtransaksi}', [UserController::class, 'bayar'])->name('bayar');
-    Route::get('/postbayar{detailtransaksi}', [UserController::class, 'postbayar'])->name('postbayar');
+    Route::post('/booking/{kamar}', [UserController::class, 'booking'])->name('booking');
+    Route::get('/biodata/{detailtransaksi}', [UserController::class, 'biodata'])->name('biodata');
+    Route::post('/post-biodata/{kamar}', [UserController::class, 'postbiodata'])->name('post-biodata');
+    Route::get('/bayar/{detailtransaksi}', [UserController::class, 'bayar'])->name('bayar');
+    Route::post('/postbayar/{detailtransaksi}', [UserController::class, 'postbayar'])->name('postbayar');
     Route::get('/sumary', [UserController::class, 'sumary'])->name('sumary');
 });

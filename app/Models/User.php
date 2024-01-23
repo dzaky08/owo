@@ -43,4 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    function Transaksi() {
+        return $this->hasMany(Transaksi::class);
+    }
+    function Penghuni() {
+        return $this->hasMany(Penghuni::class);
+    }
+    function DetailTransaksi() {
+        return $this->hasMany(DetailTransaksi::class);
+    }
 }

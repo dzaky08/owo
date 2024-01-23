@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Penghuni extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+
+    function User() {
+        return $this->belongsTo(User::class);
+    }
 }
