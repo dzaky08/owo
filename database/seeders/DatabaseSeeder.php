@@ -5,7 +5,10 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Hotel;
+<<<<<<< HEAD
 use App\Models\Kamar;
+=======
+>>>>>>> 2096dcd649f98d2d5431eff9df48a310e027f355
 use App\Models\User;
 
 class DatabaseSeeder extends Seeder
@@ -34,6 +37,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin1'),
             'role' => 'admin',
         ]); 
+<<<<<<< HEAD
         Hotel::create([
             'nama' => 'Hotel Taman Sari',
             'alamat' => 'di Sukabumi belah kidul dikit',
@@ -60,5 +64,7 @@ class DatabaseSeeder extends Seeder
             'foto' => 'img/juniorsuite.jpg',
             'harga' => 250000,
         ]); 
+=======
+>>>>>>> 2096dcd649f98d2d5431eff9df48a310e027f355
     }
 }
