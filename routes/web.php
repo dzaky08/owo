@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [UserController::class, 'home'])->name('home');
     Route::post('/booking/{kamar}', [UserController::class, 'booking'])->name('booking');
     Route::get('/biodata/{detailtransaksi}', [UserController::class, 'biodata'])->name('biodata');
-    Route::post('/post-biodata/{kamar}', [UserController::class, 'postbiodata'])->name('post-biodata');
+    Route::post('/post-biodata/{detailtransaksi}', [UserController::class, 'postBiodata'])->name('post-biodata');
     Route::get('/bayar/{detailtransaksi}', [UserController::class, 'bayar'])->name('bayar');
     Route::post('/postbayar/{detailtransaksi}', [UserController::class, 'postbayar'])->name('postbayar');
     Route::get('/sumary', [UserController::class, 'sumary'])->name('sumary');

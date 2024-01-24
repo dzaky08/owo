@@ -19,7 +19,7 @@ class DetailTransaksi extends Model
     function Kamar() {
         return $this->belongsTo(Kamar::class);
     }
-    function Hotel() {
-        return $this->belongsTo(Hotel::class);
+    function Penghuni() {
+        return $this->belongsTo(Penghuni::class);
     }
 }

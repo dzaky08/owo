@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('kamar_id')->constrained();
+            $table->foreignId('penghuni_id')->nullable()->constrained();
             $table->foreignId('transaksi_id')->nullable()->constrained();
             $table->enum('status', ['sudah dibooking', 'sudah dibayar']);
             $table->integer('total_harga')->nullable();

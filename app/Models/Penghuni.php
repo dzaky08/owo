@@ -13,4 +13,7 @@ class Penghuni extends Model
     function User() {
         return $this->belongsTo(User::class);
     }
+    function DetailTransaksi() {
+        return $this->belongsTo(DetailTransaksi::class);
+    }
 }

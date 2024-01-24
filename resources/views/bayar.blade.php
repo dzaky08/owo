@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-4">
                 <div class="card">
-                    <img src="{{ asset($kamar->foto) }}" alt="Gambar gk muncul :v" class="card-img-top">
+                    <img src="{{ asset($kamar->foto_kamar) }}" alt="Gambar gk muncul :v" class="card-img-top">
 
                 </div>
             </div>
@@ -21,8 +21,8 @@
                     <div class="card-body">
                         <h3 class="card-title">Kamar = {{ $kamar->nama }}</h3><br>
                         <p class="card-text">Harga = {{ number_format($kamar->harga, 0, '.', '.') }}</p>
-                        <p class="card-text">Total = {{ number_format($detailtransaksi->totalharga, 0, '.', '.') }}</p>
-                        <p class="card-text">QTY = {{ $detailtransaksi->qty }}</p>
+                        <p class="card-text">Total = {{ number_format($detailtransaksi->total_harga, 0, '.', '.') }}</p>
+                        <p class="card-text">Lama Menginap = {{ $penghuni->mulai }} - {{$penghuni->selesai}}</p>
                         <hr>
                         <label for="">Bukti Pembayaran</label>
                         <input class="form-control" type="file" name="bukti_transaksi"
